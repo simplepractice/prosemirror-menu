@@ -35,7 +35,11 @@ class MenuBarEditorView {
     this.menu.className = prefix
     this.spacer = null
 
-    this.wrapper.insertBefore(this.menu, this.wrapper.firstChild)
+    if (/AppleWebKit/.test(navigator.userAgent) && /Mobile\/\w+/.test(navigator.userAgent)) {
+      this.wrapper.appendChild(this.menu, this.wrapper.firstChild)
+    } else {
+      this.wrapper.insertBefore(this.menu, this.wrapper.firstChild)
+    }
 
     this.maxHeight = 0
     this.widthForMaxHeight = 0
